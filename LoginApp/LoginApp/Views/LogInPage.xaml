@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"             
+             x:Class="LoginApp.Views.LogInPage"
+             xmlns:viewmodels="clr-namespace:LoginApp.ViewModels"
+             x:DataType="viewmodels:LoginVM"
+             NavigationPage.HasNavigationBar="false"
+             BackgroundColor="White"
+             Visual="Material"  >
+    <StackLayout>
+        <Grid x:Name="GrPrincipal" >
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="8*" />
+                <RowDefinition Height="*"  />
+                <RowDefinition Height="2*"  />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="2*" />
+                <RowDefinition Height="2*" />
+                <RowDefinition Height="*"  />
+                <RowDefinition Height="2*" />
+                <RowDefinition Height="2*"  />
+                <RowDefinition Height="2*"  />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"  />
+                <ColumnDefinition Width="*"  />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="*"  />
+                <ColumnDefinition Width="*"  />
+                <ColumnDefinition Width="*"  />
+            </Grid.ColumnDefinitions>
+
+            <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" Color="Blue"
+                               HorizontalOptions="CenterAndExpand"
+                               VerticalOptions="EndAndExpand"                               
+                               Opacity="0.5"
+                                Grid.Row="1"  Grid.Column="3" />
+
+
+            <Label Text="Conectando"  FontSize="Title" FontAttributes="Bold" 
+                   HorizontalTextAlignment="Center"
+                   IsVisible="{Binding IsBusy}"  Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="5"/>
+
+            
+
+            <Entry  x:Name="entUsuario" BackgroundColor="Transparent"  IsVisible="{Binding IsNotBusy}" 
+                    Placeholder="Usuario"  Text="{Binding User}" 
+                    Visual="Material" HorizontalTextAlignment="Center"
+                    IsSpellCheckEnabled="False" IsTextPredictionEnabled="False"
+                    Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3" />
+
+            
+
+            <Entry  x:Name="entClave"   IsPassword="True" IsVisible="{Binding IsNotBusy}" 
+                     Text="{Binding Pass}" BackgroundColor="Transparent" 
+                     Visual="Material"  HorizontalTextAlignment="Center"              
+                     Placeholder="Clave"    MaxLength="4" Keyboard="Numeric"
+                    Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="3" />
+
+            <Button  x:Name="btnLog" Text="Ingresar" 
+                     IsVisible="{Binding IsNotBusy}"  IsEnabled="{Binding IsNotBusy}"
+                     BorderRadius="10" BackgroundColor="#68B2D4" 
+                     Command="{Binding LoginCommand}" 
+                     Grid.Row="9" Grid.Column="2" Grid.ColumnSpan="3" >
+            </Button>
+
+        </Grid>
+
+    </StackLayout>
+    
+</ContentPage>
